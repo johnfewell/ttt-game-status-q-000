@@ -16,16 +16,20 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  WIN_COMBINATIONS.detect do 
-
-  if position_1 == "X" || position_1 == "O" && position_2 == "X" || position_2 == "O" && position_3 = "X" || position_3 = "O"
-    return win_combination # return the win_combination indexes that won.
-  else
-    false
+  win_combination = WIN_COMBINATIONS.detect do |win_combination|
+    win_combination.all? {|i| board[i]=="X"} || win_combination.all? {|i| board[i]=="O"}
   end
-    
-    
-    
-    board[0] == "X" or "O"? if so, does board[0] == board[1] == board[2]
+  return win_combination unless win_combination == nil
 end
+
+def full?(board)
+  board.each do |x|
+    if x == nil || x == " "
+      return false
+    else 
+      return true
+    end
+  end
 end
+
+
